@@ -59,7 +59,7 @@ def send_msg(token, content):
            },
            "safe": 0
         }
-        data = simplejson.dumps(data,ensure_ascii=False)
+        data = simplejson.dumps(data, ensure_ascii=False)
         req = urllib2.Request('https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={0}'.format(token))
         response = urllib2.urlopen(req, data)
         print response.read()
