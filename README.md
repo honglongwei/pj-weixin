@@ -1,7 +1,8 @@
 # 微信接口开发
 
-```python
+### 获取token
 
+```python
 
 #!/usr/bin/env python  
 # -*- coding: utf-8 -*-  
@@ -10,7 +11,7 @@ import urllib
 import urllib2
 import json
 
-def _tes():
+def get_token():
     url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?'   
     user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'   
     values = {
@@ -24,6 +25,5 @@ def _tes():
     res = response.read()   
     data = json.loads(res)   
     return data
-
 
 ```
