@@ -27,3 +27,45 @@ def get_token():
     return data
 
 ```
+
+### 给微信公众号发消息
+
+```python
+
+#!/usr/bin/env python
+#_*_ coding:utf-8 _*_
+
+import sys  
+reload(sys)  
+sys.setdefaultencoding('utf8') 
+
+
+import urllib2
+import urllib
+import json
+import httplib
+import simplejson
+
+def send_msg(token, content):
+    try:
+        data = {
+           "touser": "@all",
+           "toparty": "@all",
+           "totag": "test",
+           "msgtype": "text",
+           "agentid": 1,
+           "text": {
+               "content": content,
+           },
+           "safe": 0
+        }
+        data = simplejson.dumps(data,ensure_ascii=False)
+        req = urllib2.Request('https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={0}'.format(token))
+        response = urllib2.urlopen(req, data)
+        print response.read()
+    except Exception,e:
+        print str(e)
+
+print send_msg(token, '测试内容')
+
+```
